@@ -19,137 +19,87 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .google-btn img{width:20px;height:20px;}
 
 /* APP */
-#app{display:none;max-width:480px;margin:0 auto;padding-bottom:80px;min-height:100vh;}
+#app{display:none;max-width:900px;margin:0 auto;padding:16px 16px 80px;}
 
 /* TOP BAR */
-.topbar{background:white;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;position:sticky;top:0;z-index:50;}
+.topbar{background:white;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;border-radius:12px;margin-bottom:16px;}
 .topbar-title{font-size:16px;font-weight:600;}
-.topbar-user{display:flex;align-items:center;gap:8px;}
-.user-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;}
-.user-initials{width:32px;height:32px;border-radius:50%;background:#667eea;color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;}
-.sync-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.search-field{display:flex;align-items:center;gap:8px;}
+.search-input{padding:8px 12px;border:1.5px solid #ddd;border-radius:6px;font-size:13px;width:220px;}
+.search-input:focus{outline:none;border-color:#667eea;}
+.search-results{display:none;position:fixed;top:70px;right:20px;background:white;border:1px solid #ddd;border-radius:8px;width:220px;max-height:300px;overflow-y:auto;z-index:200;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+.search-results.open{display:block;}
+.search-result-item{padding:10px 12px;border-bottom:1px solid #f0f0f0;cursor:pointer;font-size:12px;}
+.search-result-item:hover{background:#f8f8ff;}
 
 /* BOTTOM NAV */
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:white;border-top:1px solid #eee;display:flex;z-index:50;}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:900px;background:white;border-top:1px solid #eee;display:flex;z-index:50;border-radius:16px 16px 0 0;}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;cursor:pointer;border:none;background:transparent;color:#999;font-size:10px;gap:3px;transition:color 0.15s;}
 .nav-item.active{color:#667eea;}
 .nav-item svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;}
 
-/* SECTIONS */
-.section{display:none;padding:16px;}
-.section.active{display:block;}
-.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
-.section-title{font-size:18px;font-weight:600;}
-.fab{background:#667eea;color:white;border:none;border-radius:8px;padding:8px 14px;cursor:pointer;font-size:13px;font-weight:500;display:flex;align-items:center;gap:5px;}
-.fab:hover{background:#5a6fd6;}
+/* VIEW TABS */
+.view-tabs{display:flex;gap:8px;margin-bottom:20px;}
+.tab-btn{padding:8px 14px;border:1.5px solid #ddd;background:white;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;transition:all 0.15s;}
+.tab-btn.active{background:#667eea;color:white;border-color:#667eea;}
 
-/* CARDS */
-.card{background:white;border-radius:12px;padding:14px 16px;margin-bottom:10px;border:1px solid #f0f0f0;}
-.card-row{display:flex;align-items:center;gap:10px;}
+/* WEEK CONTAINER */
+.week-container{background:white;border-radius:12px;padding:20px;border:1px solid #f0f0f0;display:grid;grid-template-columns:1fr 1fr;gap:20px;min-height:500px;}
 
-/* CALENDAR */
-.cal-month-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
-.cal-nav-btn{background:transparent;border:1px solid #e0e0e0;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:13px;}
-.cal-month-label{font-size:15px;font-weight:600;}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:16px;}
-.cal-day-name{text-align:center;font-size:10px;color:#999;padding:4px 0;font-weight:600;}
-.cal-day{min-height:44px;border-radius:6px;padding:3px;border:1px solid #f0f0f0;background:white;cursor:pointer;transition:background 0.1s;}
-.cal-day:hover{background:#f8f8ff;}
-.cal-day.today{border-color:#667eea;background:#f0f0ff;}
-.cal-day.selected{background:#667eea;border-color:#667eea;}
-.cal-day.selected .day-num{color:white;}
-.cal-day.other-month{opacity:0.35;}
-.day-num{font-size:11px;color:#333;text-align:right;padding:1px 2px;}
-.day-dots{display:flex;gap:2px;flex-wrap:wrap;padding:1px;}
-.day-dot{width:5px;height:5px;border-radius:50%;}
-.event-card{background:white;border-radius:8px;padding:10px 12px;margin-bottom:8px;border-left:3px solid #667eea;border-top:1px solid #f0f0f0;border-right:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;gap:10px;}
-.event-info{flex:1;}
-.event-title{font-size:13px;font-weight:500;}
-.event-meta{font-size:11px;color:#888;margin-top:2px;}
-.event-source{font-size:10px;padding:2px 6px;border-radius:10px;font-weight:500;}
-.source-google{background:#e8f5e9;color:#2e7d32;}
-.source-local{background:#ede7f6;color:#4527a0;}
-.del-btn{background:transparent;border:none;cursor:pointer;color:#ccc;padding:4px;border-radius:4px;}
-.del-btn:hover{color:#e53935;background:#fce4ec;}
+/* LEFT SIDE */
+.current-day{display:flex;flex-direction:column;border-right:2px solid #f0f0f0;padding-right:20px;}
+.time-display{font-size:32px;font-weight:700;color:#667eea;margin-bottom:4px;font-family:'Courier New',monospace;}
+.time-label{font-size:11px;color:#999;font-weight:600;margin-bottom:16px;}
+.weather-box{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;border-radius:8px;padding:12px;margin-bottom:16px;font-size:13px;text-align:center;}
+.weather-temp{font-size:18px;font-weight:600;margin:4px 0;}
+.current-day-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.current-day-title{font-size:14px;color:#999;font-weight:600;}
+.today-btn{background:#667eea;color:white;border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:11px;font-weight:600;}
+.today-btn:hover{background:#5a6fd6;}
+.current-day-date{font-size:20px;font-weight:600;margin-bottom:16px;}
+.day-info{font-size:12px;color:#666;margin-bottom:12px;line-height:1.5;}
+.info-label{font-weight:600;display:block;margin-bottom:2px;}
+.current-events{flex:1;}
+.events-label{font-size:12px;color:#999;font-weight:600;margin-bottom:8px;}
+.event-card{background:#f8f8ff;border-left:3px solid #667eea;border-radius:4px;padding:10px 12px;margin-bottom:8px;}
+.event-emoji{font-size:16px;margin-right:6px;}
+.event-title{font-size:13px;font-weight:500;display:inline;}
+.event-time{font-size:11px;color:#999;display:block;margin-top:3px;}
+.add-event-btn{width:100%;padding:8px;border:1.5px dashed #ddd;background:transparent;border-radius:6px;cursor:pointer;font-size:12px;color:#667eea;font-weight:500;margin-top:12px;}
+.add-event-btn:hover{background:#f0f0ff;border-color:#667eea;}
 
-/* MEMBER SELECT */
-.member-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
-.member-chip{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:2px solid transparent;transition:all 0.15s;opacity:0.5;}
-.member-chip.on{opacity:1;}
-
-/* TASKS */
-.task-card{background:white;border-radius:8px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px;border:1px solid #f0f0f0;}
-.task-check{width:20px;height:20px;border-radius:50%;border:2px solid #ddd;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
-.task-check.done{background:#22c55e;border-color:#22c55e;}
-.task-check.done::after{content:'✓';color:white;font-size:11px;}
-.task-text{flex:1;font-size:13px;}
-.task-text.done{text-decoration:line-through;color:#aaa;}
-.stars-row{display:flex;gap:2px;}
-.star{font-size:14px;cursor:pointer;}
-.member-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-
-/* STAR CARDS */
-.star-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
-.star-card{background:white;border-radius:12px;padding:14px;text-align:center;border:1px solid #f0f0f0;}
-.star-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;margin:0 auto 8px;}
-.star-name{font-size:13px;font-weight:600;margin-bottom:2px;}
-.star-count{font-size:26px;font-weight:700;}
-.star-progress{margin-top:6px;background:#f0f0f0;border-radius:10px;height:5px;overflow:hidden;}
-.star-fill{height:100%;border-radius:10px;transition:width 0.3s;}
-
-/* MEALS */
-.meals-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:16px;}
-.meal-cell{background:white;border-radius:8px;padding:6px 4px;border:1px solid #f0f0f0;cursor:pointer;min-height:64px;}
-.meal-cell:hover{background:#f8f8ff;}
-.meal-day-name{font-size:9px;color:#999;font-weight:600;text-align:center;margin-bottom:3px;}
-.meal-name{font-size:10px;color:#333;text-align:center;line-height:1.3;}
-.meal-empty{font-size:16px;text-align:center;color:#ddd;margin-top:10px;}
-.allergy-row{display:flex;gap:6px;flex-wrap:wrap;}
-.allergy-badge{font-size:11px;padding:3px 8px;border-radius:10px;font-weight:500;}
-
-/* SHOPPING */
-.shop-cat{margin-bottom:14px;}
-.shop-cat-label{font-size:12px;color:#888;font-weight:600;margin-bottom:6px;padding-left:4px;}
-.shop-item{background:white;border-radius:8px;padding:9px 12px;margin-bottom:6px;display:flex;align-items:center;gap:10px;border:1px solid #f0f0f0;}
-.shop-check{width:18px;height:18px;border-radius:4px;border:2px solid #ddd;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.shop-check.done{background:#22c55e;border-color:#22c55e;}
-.shop-check.done::after{content:'✓';color:white;font-size:10px;}
-.shop-text{flex:1;font-size:13px;}
-.shop-text.done{text-decoration:line-through;color:#aaa;}
-
-/* PHOTOS */
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
-.photo-thumb{aspect-ratio:1;border-radius:8px;overflow:hidden;cursor:pointer;background:#f0f0f0;display:flex;align-items:center;justify-content:center;border:1px solid #eee;}
-.photo-thumb img{width:100%;height:100%;object-fit:cover;}
-.photo-add{background:#f8f8ff;border:2px dashed #c0b8f0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#9985e0;font-size:12px;gap:5px;cursor:pointer;}
-.photo-add-icon{font-size:28px;}
+/* RIGHT SIDE */
+.week-days{display:flex;flex-direction:column;gap:8px;}
+.week-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.week-nav-btn{background:transparent;border:1px solid #ddd;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:12px;}
+.week-nav-btn:hover{background:#f8f8f8;}
+.week-title{font-size:13px;font-weight:600;}
+.day-column{background:#fafafa;border:1px solid #f0f0f0;border-radius:6px;padding:10px;min-height:80px;cursor:pointer;transition:all 0.15s;}
+.day-column:hover{background:#f0f0ff;border-color:#c0b8f0;}
+.day-column.selected{background:#e8e0f6;border:2px solid #667eea;}
+.day-col-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.day-col-name{font-size:11px;color:#999;font-weight:600;}
+.day-col-num{font-size:14px;font-weight:600;}
+.day-col-events{display:flex;flex-direction:column;gap:3px;}
+.day-col-event{background:white;padding:4px 6px;border-radius:3px;border-left:2px solid #667eea;font-size:10px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.day-col-event-emoji{font-size:11px;margin-right:2px;}
 
 /* MODAL */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;align-items:center;justify-content:center;padding:16px;}
-.modal-bg.open{display:flex;}
-.modal{background:white;border-radius:16px;padding:20px;width:100%;max-width:340px;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;border-radius:12px;padding:20px;width:90%;max-width:360px;}
 .modal-title{font-size:16px;font-weight:600;margin-bottom:16px;}
 .form-group{margin-bottom:12px;}
-.form-label{font-size:12px;color:#666;margin-bottom:4px;display:block;}
-.form-input{width:100%;padding:9px 11px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:13px;color:#333;background:#fafafa;}
-.form-input:focus{outline:none;border-color:#667eea;background:white;}
-.member-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.member-opt{padding:7px 10px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:2px solid transparent;text-align:center;transition:all 0.15s;opacity:0.5;}
-.member-opt.sel{opacity:1;}
+.form-label{font-size:12px;color:#666;margin-bottom:4px;display:block;font-weight:500;}
+.form-input{width:100%;padding:8px 10px;border:1px solid #ddd;border-radius:6px;font-size:13px;}
+.form-input:focus{outline:none;border-color:#667eea;}
+.emoji-input{font-size:16px;width:40px;padding:4px;}
+.color-picker{display:flex;gap:6px;margin-top:6px;}
+.color-opt{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;}
+.color-opt.selected{border-color:#333;}
 .modal-btns{display:flex;gap:8px;margin-top:16px;}
-.btn-save{flex:1;background:#667eea;color:white;border:none;border-radius:8px;padding:10px;cursor:pointer;font-size:13px;font-weight:600;}
-.btn-cancel{flex:1;background:transparent;color:#666;border:1.5px solid #e0e0e0;border-radius:8px;padding:10px;cursor:pointer;font-size:13px;}
-
-/* TOAST */
-.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#333;color:white;padding:8px 16px;border-radius:20px;font-size:13px;z-index:300;opacity:0;transition:opacity 0.3s;pointer-events:none;}
-.toast.show{opacity:1;}
-
-/* PHOTO VIEWER */
-.photo-viewer{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:300;align-items:center;justify-content:center;flex-direction:column;}
-.photo-viewer.open{display:flex;}
-.photo-viewer img{max-width:95vw;max-height:80vh;border-radius:8px;object-fit:contain;}
-.photo-viewer-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;color:white;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;}
+.btn-primary{flex:1;background:#667eea;color:white;border:none;border-radius:6px;padding:8px;cursor:pointer;font-weight:600;font-size:13px;}
+.btn-cancel{flex:1;background:transparent;border:1px solid #ddd;border-radius:6px;padding:8px;cursor:pointer;font-size:13px;}
 
 /* LOADING */
 #loading{display:flex;align-items:center;justify-content:center;min-height:100vh;font-size:14px;color:#666;}
@@ -173,106 +123,119 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <div id="app">
   <div class="topbar">
-    <div class="topbar-title">📅 Familienplaner</div>
-    <div class="topbar-user">
-      <div class="sync-dot" id="sync-dot" title="Synchronisiert"></div>
-      <div class="user-initials" id="user-avatar">?</div>
+    <span class="topbar-title">📅 Familienplaner</span>
+    <div class="search-field">
+      <input type="text" class="search-input" id="search-input" placeholder="🔍 Termine durchsuchen..." onkeyup="searchEvents()">
     </div>
   </div>
 
-  <!-- KALENDER -->
-  <div class="section active" id="sec-cal">
-    <div class="section-header">
-      <span class="section-title">Kalender</span>
-      <button class="fab" onclick="openModal('event')">+ Termin</button>
-    </div>
-    <div class="member-chips" id="cal-chips"></div>
-    <div class="cal-month-nav">
-      <button class="cal-nav-btn" onclick="changeMonth(-1)">◀</button>
-      <span class="cal-month-label" id="cal-month"></span>
-      <button class="cal-nav-btn" onclick="changeMonth(1)">▶</button>
-    </div>
-    <div class="cal-grid" id="cal-grid"></div>
-    <div id="event-list"></div>
+  <div class="search-results" id="search-results"></div>
+
+  <div class="view-tabs">
+    <button class="tab-btn active" onclick="showSection('week')">📊 Wochenansicht</button>
+    <button class="tab-btn" onclick="showSection('month')">📅 Monat</button>
+    <button class="tab-btn" onclick="showSection('tasks')">✓ Aufgaben</button>
+    <button class="tab-btn" onclick="showSection('meals')">🍽️ Mahlzeiten</button>
+    <button class="tab-btn" onclick="showSection('shopping')">🛒 Einkauf</button>
   </div>
 
-  <!-- AUFGABEN -->
-  <div class="section" id="sec-tasks">
-    <div class="section-header">
-      <span class="section-title">Aufgaben</span>
-      <button class="fab" onclick="openModal('task')">+ Aufgabe</button>
+  <!-- WEEK VIEW -->
+  <div id="section-week" class="week-container">
+    <div class="current-day">
+      <div class="time-display" id="current-time">--:--</div>
+      <div class="time-label">UHRZEIT</div>
+      <div class="weather-box">
+        <div>☀️ Sonnig</div>
+        <div class="weather-temp">22°C</div>
+        <div style="font-size:11px;">Leichter Wind</div>
+      </div>
+      <div class="current-day-header">
+        <span class="current-day-title">AKTUELLER TAG</span>
+        <button class="today-btn" onclick="goToToday()">Heute</button>
+      </div>
+      <div class="current-day-date" id="current-date">Montag, 29. Juni</div>
+      <div class="day-info">
+        <span class="info-label">Arbeit:</span>
+        F = Früh | S = Spät | Juwels
+      </div>
+      <div class="current-events">
+        <div class="events-label">TERMINE</div>
+        <div id="current-events-list"></div>
+      </div>
+      <button class="add-event-btn" onclick="openEventForm()">+ Termin hinzufügen</button>
     </div>
-    <div class="star-cards" id="star-cards"></div>
-    <div id="task-list"></div>
+
+    <div>
+      <div class="week-nav">
+        <button class="week-nav-btn" onclick="prevWeek()">◀ Vorher</button>
+        <div class="week-title">Restliche Woche</div>
+        <button class="week-nav-btn" onclick="nextWeek()">Nachher ▶</button>
+      </div>
+      <div class="week-days" id="week-days"></div>
+    </div>
   </div>
 
-  <!-- MAHLZEITEN -->
-  <div class="section" id="sec-meals">
-    <div class="section-header">
-      <span class="section-title">Wochenmenü</span>
-      <button class="fab" onclick="openModal('meal')">+ Gericht</button>
-    </div>
-    <div class="meals-grid" id="meals-grid"></div>
-    <div style="font-size:13px;color:#666;font-weight:600;margin-bottom:8px;">Hinweise</div>
-    <div class="allergy-row" id="allergy-row"></div>
-  </div>
-
-  <!-- FOTOS -->
-  <div class="section" id="sec-photos">
-    <div class="section-header">
-      <span class="section-title">Fotos</span>
-      <button class="fab" onclick="document.getElementById('photo-input').click()">+ Foto</button>
-    </div>
-    <input type="file" id="photo-input" accept="image/*" multiple style="display:none;" onchange="handlePhotoUpload(event)">
-    <div class="photo-grid" id="photo-grid"></div>
-  </div>
-
-  <!-- EINKAUF -->
-  <div class="section" id="sec-shopping">
-    <div class="section-header">
-      <span class="section-title">Einkaufsliste</span>
-      <button class="fab" onclick="openModal('shop')">+ Artikel</button>
-    </div>
-    <div id="shopping-list"></div>
-  </div>
+  <!-- OTHER SECTIONS PLACEHOLDER -->
+  <div id="section-month" style="display:none;padding:20px;background:white;border-radius:12px;">Monatsansicht (in Arbeit)</div>
+  <div id="section-tasks" style="display:none;padding:20px;background:white;border-radius:12px;">Aufgaben (in Arbeit)</div>
+  <div id="section-meals" style="display:none;padding:20px;background:white;border-radius:12px;">Mahlzeiten (in Arbeit)</div>
+  <div id="section-shopping" style="display:none;padding:20px;background:white;border-radius:12px;">Einkaufsliste (in Arbeit)</div>
 
   <nav class="bottom-nav">
-    <button class="nav-item active" onclick="showSection('cal',this)" id="nav-cal">
-      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>Kalender
+    <button class="nav-item active" onclick="showSection('week',this)">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>Woche
     </button>
-    <button class="nav-item" onclick="showSection('tasks',this)" id="nav-tasks">
+    <button class="nav-item" onclick="showSection('month',this)">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>Monat
+    </button>
+    <button class="nav-item" onclick="showSection('tasks',this)">
       <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Aufgaben
     </button>
-    <button class="nav-item" onclick="showSection('meals',this)" id="nav-meals">
-      <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Menü
+    <button class="nav-item" onclick="showSection('meals',this)">
+      <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/></svg>Menü
     </button>
-    <button class="nav-item" onclick="showSection('photos',this)" id="nav-photos">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Fotos
-    </button>
-    <button class="nav-item" onclick="showSection('shopping',this)" id="nav-shopping">
+    <button class="nav-item" onclick="showSection('shopping',this)">
       <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.98-1.71l1.62-9.29H6"/></svg>Einkauf
     </button>
   </nav>
 </div>
 
-<!-- MODALS -->
-<div class="modal-bg" id="modal-bg" onclick="closeModalOutside(event)">
-  <div class="modal" id="modal-content"></div>
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-title">Neuer Termin</div>
+    <div class="form-group">
+      <label class="form-label">Emoji</label>
+      <input type="text" class="emoji-input form-input" id="emoji-input" value="📅" maxlength="2">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Titel</label>
+      <input type="text" class="form-input" id="event-title" placeholder="z.B. Zahnarzt">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Datum</label>
+      <input type="date" class="form-input" id="event-date">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Zeit</label>
+      <input type="time" class="form-input" id="event-time">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Farbe</label>
+      <div class="color-picker" id="color-picker"></div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">Abbrechen</button>
+      <button class="btn-primary" onclick="saveEvent()">Speichern</button>
+    </div>
+  </div>
 </div>
-
-<!-- PHOTO VIEWER -->
-<div class="photo-viewer" id="photo-viewer">
-  <button class="photo-viewer-close" onclick="closePhotoViewer()">✕</button>
-  <img id="photo-viewer-img" src="" alt="">
-</div>
-
-<div class="toast" id="toast"></div>
 
 <!-- FIREBASE -->
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, doc, collection, onSnapshot, setDoc, deleteDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, doc, collection, onSnapshot, setDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyD1noiwnob0f4zWNtyPcJbcVAN54YJvw2w",
@@ -283,9 +246,6 @@ const firebaseConfig = {
   appId: "1:547645477153:web:25ef6c7f0175a7dbb3ee60"
 };
 
-const GOOGLE_CLIENT_ID = "547645477153-s1beu2vqltacv5f9e1162eereb7t0aeh.apps.googleusercontent.com";
-const GCAL_SCOPE = "https://www.googleapis.com/auth/calendar.readonly";
-
 const fbApp = initializeApp(firebaseConfig);
 const auth = getAuth(fbApp);
 const db = getFirestore(fbApp);
@@ -295,15 +255,12 @@ window._db = db;
 window._signOut = () => signOut(auth);
 
 const provider = new GoogleAuthProvider();
-provider.addScope(GCAL_SCOPE);
+provider.addScope("https://www.googleapis.com/auth/calendar.readonly");
 
 window.signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, provider);
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    window._gcalToken = credential?.accessToken || null;
-    if (window._gcalToken) loadGoogleCalendar(window._gcalToken);
-  } catch(e) { showToast('Anmeldung fehlgeschlagen'); }
+  } catch(e) { console.error(e); }
 };
 
 onAuthStateChanged(auth, user => {
@@ -311,12 +268,6 @@ onAuthStateChanged(auth, user => {
   if (user) {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('app').style.display = 'block';
-    const av = document.getElementById('user-avatar');
-    if (user.photoURL) {
-      av.outerHTML = `<img class="user-avatar" src="${user.photoURL}" alt="${user.displayName}">`;
-    } else {
-      av.textContent = (user.displayName||'?').split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
-    }
     window._uid = user.uid;
     initFirestore(user.uid);
   } else {
@@ -327,550 +278,167 @@ onAuthStateChanged(auth, user => {
 
 function initFirestore(uid) {
   const base = `users/${uid}`;
-
-  // Events
   onSnapshot(collection(db, base, 'events'), snap => {
     window._events = [];
     snap.forEach(d => window._events.push({id: d.id, ...d.data()}));
-    renderCal();
+    if (window._currentView === 'week') renderWeek();
   });
-
-  // Tasks
-  onSnapshot(collection(db, base, 'tasks'), snap => {
-    window._tasks = [];
-    snap.forEach(d => window._tasks.push({id: d.id, ...d.data()}));
-    renderTasks();
-  });
-
-  // Meals
-  onSnapshot(collection(db, base, 'meals'), snap => {
-    window._meals = [];
-    snap.forEach(d => window._meals.push({id: d.id, ...d.data()}));
-    renderMeals();
-  });
-
-  // Shopping
-  onSnapshot(collection(db, base, 'shopping'), snap => {
-    window._shopping = [];
-    snap.forEach(d => window._shopping.push({id: d.id, ...d.data()}));
-    renderShopping();
-  });
-
-  // Photos (stored as base64 in Firestore for simplicity)
-  onSnapshot(collection(db, base, 'photos'), snap => {
-    window._photos = [];
-    snap.forEach(d => window._photos.push({id: d.id, ...d.data()}));
-    renderPhotos();
-  });
-
-  // Stars
-  onSnapshot(doc(db, base, 'meta', 'stars'), snap => {
-    if (snap.exists()) window._stars = snap.data();
-    renderTasks();
-  });
-
-  // Settings (members, allergies)
-  onSnapshot(doc(db, base, 'meta', 'settings'), snap => {
-    if (snap.exists()) {
-      const d = snap.data();
-      if (d.members) window._members = d.members;
-      if (d.allergies) window._allergies = d.allergies;
-    }
-    renderCal();
-    renderTasks();
-    renderMeals();
-  });
-
-  // Load Google Calendar if token available
-  if (window._gcalToken) loadGoogleCalendar(window._gcalToken);
 }
 
-// Firestore helpers
 window._fsSet = async (path, data) => {
   const parts = path.split('/');
-  const ref = doc(db, ...parts);
-  await setDoc(ref, data, {merge: true});
+  await setDoc(doc(db, ...parts), data, {merge: true});
 };
-window._fsDel = async (path) => {
-  const parts = path.split('/');
-  await deleteDoc(doc(db, ...parts));
-};
+
 window._fsAdd = async (col, data) => {
   const id = Date.now().toString(36) + Math.random().toString(36).slice(2);
   const parts = col.split('/');
   await setDoc(doc(db, ...parts, id), data);
   return id;
 };
-
-// Google Calendar
-window.loadGoogleCalendar = async (token) => {
-  try {
-    const now = new Date();
-    const min = now.toISOString();
-    const max = new Date(now.getTime() + 60*24*60*60*1000).toISOString();
-    const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=${min}&timeMax=${max}&singleEvents=true&orderBy=startTime`, {
-      headers: { Authorization: 'Bearer ' + token }
-    });
-    const data = await res.json();
-    window._gcalEvents = (data.items || []).map(e => ({
-      id: 'g_' + e.id,
-      title: e.summary || '(kein Titel)',
-      date: (e.start.dateTime || e.start.date).slice(0,10),
-      time: e.start.dateTime ? e.start.dateTime.slice(11,16) : '',
-      memberId: 'dominik',
-      source: 'google'
-    }));
-    renderCal();
-    showToast('Google Kalender geladen ✓');
-  } catch(e) {
-    console.error('GCal error', e);
-  }
-};
 </script>
 
 <script>
-// ─── STATE ───────────────────────────────────────────────────────
-window._events = [];
-window._tasks = [];
-window._meals = [];
-window._shopping = [];
-window._photos = [];
-window._gcalEvents = [];
-window._stars = {};
-window._members = [
-  {id:'dominik', name:'Dominik', color:'#667eea', bg:'#ede7f6', initials:'DO'},
-  {id:'person2', name:'Person 2', color:'#22c55e', bg:'#e8f5e9', initials:'P2'},
+const colors = [
+  {name:'Blau',hex:'#667eea'}, {name:'Grün',hex:'#22c55e'}, {name:'Rot',hex:'#ef4444'},
+  {name:'Orange',hex:'#f97316'}, {name:'Rosa',hex:'#ec4899'}, {name:'Violett',hex:'#a855f7'},
 ];
-window._allergies = [
-  {label:'Laktose', color:'#fff3cd', textColor:'#856404'},
-  {label:'Nüsse', color:'#f8d7da', textColor:'#721c24'},
+
+let events = [
+  {date:'2026-06-29',emoji:'🏥',title:'Zahnarzt',time:'09:30',color:'#667eea'},
+  {date:'2026-06-29',emoji:'📞',title:'Kundencall',time:'14:00',color:'#667eea'},
+  {date:'2026-06-30',emoji:'🍕',title:'Pizza-Essen',time:'19:00',color:'#f97316'},
+  {date:'2026-07-01',emoji:'⚽',title:'Fußballtraining',time:'16:00',color:'#ef4444'},
 ];
-window._activeMembers = ['dominik','person2'];
-window._selectedDate = new Date().toISOString().slice(0,10);
-window._currentMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
 
-const DAY_NAMES = ['Mo','Di','Mi','Do','Fr','Sa','So'];
-const MONTH_NAMES = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+const DAYS=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+const DAY_SHORT=['So','Mo','Di','Mi','Do','Fr','Sa'];
+const MONTHS=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 
-// ─── NAV ─────────────────────────────────────────────────────────
+let selectedColor = colors[0].hex;
+let weekStartDate = new Date(2026, 5, 29);
+let selectedDate = '2026-06-29';
+window._events = events;
+window._currentView = 'week';
+
+function getMonday(date) {
+  const d = new Date(date);
+  const day = d.getDay();
+  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+  return new Date(d.setDate(diff));
+}
+
+function updateTime() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2,'0');
+  const m = String(now.getMinutes()).padStart(2,'0');
+  document.getElementById('current-time').textContent = `${h}:${m}`;
+}
+
+function searchEvents() {
+  const q = document.getElementById('search-input').value.toLowerCase().trim();
+  const rd = document.getElementById('search-results');
+  if (!q) { rd.classList.remove('open'); return; }
+  const f = events.filter(e => e.title.toLowerCase().includes(q) || e.emoji.includes(q));
+  rd.innerHTML = f.length ? f.map(e => `<div class="search-result-item" onclick="selectEventFromSearch('${e.date}')"><span style="font-size:14px;margin-right:6px;">${e.emoji}</span><strong>${e.title}</strong><div style="display:block;font-size:10px;color:#999;margin-top:2px;">${e.date} um ${e.time}</div></div>`).join('') : '<div style="padding:12px;text-align:center;color:#ccc;font-size:12px;">Keine Termine</div>';
+  rd.classList.add('open');
+}
+
+function selectEventFromSearch(d) {
+  const date = new Date(d + 'T00:00:00');
+  weekStartDate = getMonday(date);
+  selectedDate = d;
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-results').classList.remove('open');
+  renderWeek();
+}
+
+function renderWeek() {
+  const fd = d => d.toISOString().slice(0,10);
+  const cd = new Date(selectedDate + 'T00:00:00');
+  const dn = DAYS[cd.getDay()];
+  const dm = cd.getDate();
+  const mn = MONTHS[cd.getMonth()];
+  document.getElementById('current-date').textContent = `${dn}, ${dm}. ${mn}`;
+  
+  const te = events.filter(e => e.date === selectedDate);
+  document.getElementById('current-events-list').innerHTML = te.length ? te.map(e => `<div class="event-card" style="border-left-color:${e.color};"><span class="event-emoji">${e.emoji}</span><span class="event-title">${e.title}</span><div class="event-time">${e.time}</div></div>`).join('') : '<div style="color:#ccc;font-size:12px;padding:8px;">Keine Termine</div>';
+  
+  let wh = '';
+  for (let i=0; i<7; i++) {
+    const d = new Date(weekStartDate);
+    d.setDate(d.getDate() + i);
+    const ds = fd(d);
+    const dsn = DAY_SHORT[d.getDay()];
+    const de = events.filter(e => e.date === ds);
+    const sel = ds === selectedDate ? ' selected' : '';
+    wh += `<div class="day-column${sel}" onclick="selectDay('${ds}')"><div class="day-col-header"><div class="day-col-name">${dsn}</div><div class="day-col-num">${d.getDate()}</div></div><div class="day-col-events">${de.slice(0,3).map(e => `<div class="day-col-event" style="border-left-color:${e.color};"><span class="day-col-event-emoji">${e.emoji}</span>${e.title}</div>`).join('')}${de.length === 0 ? '<div style="font-size:9px;color:#ccc;">-</div>' : ''}</div></div>`;
+  }
+  document.getElementById('week-days').innerHTML = wh;
+}
+
+function selectDay(d) {
+  selectedDate = d;
+  const date = new Date(d + 'T00:00:00');
+  weekStartDate = getMonday(date);
+  renderWeek();
+}
+
+function prevWeek() { weekStartDate.setDate(weekStartDate.getDate() - 7); renderWeek(); }
+function nextWeek() { weekStartDate.setDate(weekStartDate.getDate() + 7); renderWeek(); }
+
+function goToToday() {
+  const today = new Date();
+  selectedDate = today.toISOString().slice(0,10);
+  weekStartDate = getMonday(today);
+  renderWeek();
+}
+
 function showSection(name, btn) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('[id^="section-"]').forEach(s => s.style.display = 'none');
+  document.getElementById('section-' + name).style.display = 'block';
   document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-  document.getElementById('sec-'+name).classList.add('active');
   if (btn) btn.classList.add('active');
+  window._currentView = name;
+  if (name === 'week') renderWeek();
 }
 
-// ─── CALENDAR ────────────────────────────────────────────────────
-function renderCal() {
-  // member chips
-  const chips = document.getElementById('cal-chips');
-  chips.innerHTML = window._members.map(m =>
-    `<div class="member-chip ${window._activeMembers.includes(m.id)?'on':''}"
-      style="background:${window._activeMembers.includes(m.id)?m.bg:'#f0f0f0'};border-color:${m.color};color:${m.color};"
-      onclick="toggleMember('${m.id}')">${m.name}</div>`
-  ).join('');
-
-  const d = window._currentMonth;
-  document.getElementById('cal-month').textContent = MONTH_NAMES[d.getMonth()] + ' ' + d.getFullYear();
-
-  const year = d.getFullYear(), month = d.getMonth();
-  const firstDay = (new Date(year, month, 1).getDay() + 6) % 7;
-  const daysInMonth = new Date(year, month+1, 0).getDate();
-  const todayStr = new Date().toISOString().slice(0,10);
-
-  const allEvents = [...window._events, ...window._gcalEvents];
-
-  let html = DAY_NAMES.map(n => `<div class="cal-day-name">${n}</div>`).join('');
-  const prevDays = new Date(year, month, 0).getDate();
-  for (let i = firstDay-1; i >= 0; i--) {
-    html += `<div class="cal-day other-month"><div class="day-num">${prevDays-i}</div></div>`;
-  }
-  for (let day = 1; day <= daysInMonth; day++) {
-    const dt = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-    const evts = allEvents.filter(e => e.date === dt && window._activeMembers.includes(e.memberId));
-    const isToday = dt === todayStr;
-    const isSel = dt === window._selectedDate;
-    const dots = evts.map(e => {
-      const m = window._members.find(m => m.id === e.memberId) || {color:'#667eea'};
-      return `<span class="day-dot" style="background:${e.source==='google'?'#4285F4':m.color};"></span>`;
-    }).join('');
-    html += `<div class="cal-day${isToday?' today':''}${isSel?' selected':''}" onclick="selectDate('${dt}')">
-      <div class="day-num">${day}</div>
-      <div class="day-dots">${dots}</div>
-    </div>`;
-  }
-  document.getElementById('cal-grid').innerHTML = html;
-  renderEventList();
+function openEventForm() {
+  document.getElementById('event-date').value = selectedDate;
+  document.getElementById('event-time').value = '10:00';
+  document.getElementById('event-title').value = '';
+  document.getElementById('emoji-input').value = '📅';
+  let ch = colors.map((c,i) => `<div class="color-opt${i===0?' selected':''}" style="background:${c.hex};" onclick="selectColor('${c.hex}',this)"></div>`).join('');
+  document.getElementById('color-picker').innerHTML = ch;
+  selectedColor = colors[0].hex;
+  document.getElementById('modal').classList.add('open');
 }
 
-function selectDate(dt) {
-  window._selectedDate = dt;
-  renderCal();
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+function selectColor(h, el) {
+  document.querySelectorAll('.color-opt').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedColor = h;
 }
 
-function renderEventList() {
-  const allEvents = [...window._events, ...window._gcalEvents];
-  const evts = allEvents.filter(e => e.date === window._selectedDate && window._activeMembers.includes(e.memberId));
-  const d = new Date(window._selectedDate + 'T00:00:00');
-  const label = d.toLocaleDateString('de-DE', {weekday:'long', day:'numeric', month:'long'});
-
-  if (!evts.length) {
-    document.getElementById('event-list').innerHTML =
-      `<div style="text-align:center;color:#aaa;font-size:13px;padding:20px;">${label}<br>Keine Termine</div>`;
-    return;
-  }
-
-  document.getElementById('event-list').innerHTML =
-    `<div style="font-size:12px;color:#888;margin-bottom:8px;font-weight:600;">${label}</div>` +
-    evts.map(e => {
-      const m = window._members.find(m => m.id === e.memberId) || {color:'#667eea', name:'?'};
-      const src = e.source === 'google'
-        ? `<span class="event-source source-google">Google</span>`
-        : `<span class="event-source source-local">Lokal</span>`;
-      return `<div class="event-card" style="border-left-color:${e.source==='google'?'#4285F4':m.color};">
-        <div class="event-info">
-          <div class="event-title">${e.title}</div>
-          <div class="event-meta">${m.name}${e.time?' · '+e.time:''} ${src}</div>
-        </div>
-        ${e.source !== 'google' ? `<button class="del-btn" onclick="deleteEvent('${e.id}')">✕</button>` : ''}
-      </div>`;
-    }).join('');
-}
-
-function toggleMember(id) {
-  const idx = window._activeMembers.indexOf(id);
-  if (idx >= 0) window._activeMembers.splice(idx,1);
-  else window._activeMembers.push(id);
-  renderCal();
-}
-
-function changeMonth(dir) {
-  window._currentMonth = new Date(window._currentMonth.getFullYear(), window._currentMonth.getMonth()+dir, 1);
-  renderCal();
-}
-
-function deleteEvent(id) {
-  if (!window._uid) return;
-  window._fsDel(`users/${window._uid}/events/${id}`);
-}
-
-// ─── TASKS ───────────────────────────────────────────────────────
-function renderTasks() {
-  const stars = window._stars || {};
-  document.getElementById('star-cards').innerHTML = window._members.map(m => {
-    const s = stars[m.id] || 0;
-    const pct = Math.min(100, (s % 10) * 10);
-    return `<div class="star-card">
-      <div class="star-avatar" style="background:${m.bg};color:${m.color};">${m.initials}</div>
-      <div class="star-name">${m.name}</div>
-      <div class="star-count">⭐ ${s}</div>
-      <div class="star-progress"><div class="star-fill" style="width:${pct}%;background:${m.color};"></div></div>
-    </div>`;
-  }).join('');
-
-  const open = window._tasks.filter(t => !t.done);
-  const done = window._tasks.filter(t => t.done);
-
-  document.getElementById('task-list').innerHTML =
-    (open.length ? `<div style="font-size:12px;color:#888;font-weight:600;margin-bottom:8px;">Offen (${open.length})</div>${open.map(taskHTML).join('')}` : '') +
-    (done.length ? `<div style="font-size:12px;color:#888;font-weight:600;margin:12px 0 8px;">Erledigt (${done.length})</div>${done.map(taskHTML).join('')}` : '');
-}
-
-function taskHTML(t) {
-  const m = window._members.find(m => m.id === t.memberId) || {color:'#667eea'};
-  const starsHtml = [1,2,3].map(n =>
-    `<span class="star" onclick="setStars('${t.id}',${n})">${n <= (t.stars||0) ? '⭐' : '☆'}</span>`
-  ).join('');
-  return `<div class="task-card">
-    <div class="task-check${t.done?' done':''}" onclick="toggleTask('${t.id}')"></div>
-    <span class="member-dot" style="background:${m.color};"></span>
-    <span class="task-text${t.done?' done':''}">${t.title}</span>
-    <div class="stars-row">${starsHtml}</div>
-    <button class="del-btn" onclick="deleteTask('${t.id}')">✕</button>
-  </div>`;
-}
-
-function toggleTask(id) {
-  if (!window._uid) return;
-  const t = window._tasks.find(t => t.id === id);
-  if (!t) return;
-  const newDone = !t.done;
-  window._fsSet(`users/${window._uid}/events/${id}`, {done: newDone});
-  // Actually tasks collection:
-  const ref = `users/${window._uid}/tasks/${id}`;
-  window._fsSet(ref, {done: newDone});
-  if (newDone && t.stars) {
-    const stars = window._stars || {};
-    const cur = stars[t.memberId] || 0;
-    window._fsSet(`users/${window._uid}/meta/stars`, {[t.memberId]: cur + t.stars});
-  }
-}
-
-function setStars(id, n) {
-  if (!window._uid) return;
-  window._fsSet(`users/${window._uid}/tasks/${id}`, {stars: n});
-}
-
-function deleteTask(id) {
-  if (!window._uid) return;
-  window._fsDel(`users/${window._uid}/tasks/${id}`);
-}
-
-// ─── MEALS ───────────────────────────────────────────────────────
-function renderMeals() {
-  document.getElementById('meals-grid').innerHTML = DAY_NAMES.map((dn, i) => {
-    const meal = window._meals.find(m => m.day === i);
-    return `<div class="meal-cell" onclick="editMeal(${i})">
-      <div class="meal-day-name">${dn}</div>
-      ${meal ? `<div class="meal-name">${meal.name}</div>` : `<div class="meal-empty">+</div>`}
-    </div>`;
-  }).join('');
-
-  document.getElementById('allergy-row').innerHTML = (window._allergies||[]).map(a =>
-    `<span class="allergy-badge" style="background:${a.color};color:${a.textColor};">⚠ ${a.label}</span>`
-  ).join('');
-}
-
-function editMeal(day) {
-  const meal = window._meals.find(m => m.day === day);
-  showModal(`
-    <div class="modal-title">${DAY_NAMES[day]} – Mahlzeit</div>
-    <div class="form-group">
-      <label class="form-label">Gericht</label>
-      <input class="form-input" id="m-name" value="${meal ? meal.name : ''}" placeholder="z.B. Pasta Bolognese">
-    </div>
-    <div class="modal-btns">
-      <button class="btn-cancel" onclick="closeModal()">Abbrechen</button>
-      <button class="btn-save" onclick="saveMeal(${day}, '${meal ? meal.id : ''}')">Speichern</button>
-    </div>`);
-  setTimeout(() => document.getElementById('m-name')?.focus(), 50);
-}
-
-async function saveMeal(day, existingId) {
-  const name = document.getElementById('m-name')?.value?.trim();
-  if (!name || !window._uid) { closeModal(); return; }
-  if (existingId) {
-    await window._fsSet(`users/${window._uid}/meals/${existingId}`, {day, name});
-  } else {
-    await window._fsAdd(`users/${window._uid}/meals`, {day, name});
-  }
+function saveEvent() {
+  const title = document.getElementById('event-title').value.trim();
+  const date = document.getElementById('event-date').value;
+  const time = document.getElementById('event-time').value;
+  const emoji = document.getElementById('emoji-input').value || '📅';
+  if (!title || !date) { alert('Titel und Datum erforderlich'); return; }
+  events.push({date, emoji, title, time, color:selectedColor});
+  if (window._uid) window._fsAdd(`users/${window._uid}/events`, {date, emoji, title, time, color:selectedColor});
   closeModal();
+  selectedDate = date;
+  weekStartDate = getMonday(new Date(date + 'T00:00:00'));
+  renderWeek();
 }
 
-// ─── PHOTOS ──────────────────────────────────────────────────────
-function renderPhotos() {
-  const grid = document.getElementById('photo-grid');
-  grid.innerHTML = window._photos.map((p,i) =>
-    `<div class="photo-thumb" onclick="viewPhoto('${p.url}')">
-      <img src="${p.url}" alt="Foto ${i+1}" loading="lazy">
-    </div>`
-  ).join('') +
-  `<div class="photo-thumb photo-add" onclick="document.getElementById('photo-input').click()">
-    <div class="photo-add-icon">+</div><div>Foto</div>
-  </div>`;
-}
-
-async function handlePhotoUpload(e) {
-  const files = Array.from(e.target.files);
-  for (const file of files) {
-    const reader = new FileReader();
-    reader.onload = async ev => {
-      if (!window._uid) return;
-      await window._fsAdd(`users/${window._uid}/photos`, {
-        url: ev.target.result,
-        name: file.name,
-        ts: Date.now()
-      });
-      showToast('Foto gespeichert ✓');
-    };
-    reader.readAsDataURL(file);
-  }
-  e.target.value = '';
-}
-
-function viewPhoto(url) {
-  document.getElementById('photo-viewer-img').src = url;
-  document.getElementById('photo-viewer').classList.add('open');
-}
-
-function closePhotoViewer() {
-  document.getElementById('photo-viewer').classList.remove('open');
-}
-
-// ─── SHOPPING ────────────────────────────────────────────────────
-function renderShopping() {
-  const cats = {};
-  window._shopping.forEach(s => {
-    if (!cats[s.category]) cats[s.category] = [];
-    cats[s.category].push(s);
-  });
-  document.getElementById('shopping-list').innerHTML = Object.entries(cats).map(([cat, items]) =>
-    `<div class="shop-cat">
-      <div class="shop-cat-label">🏷 ${cat}</div>
-      ${items.map(s => `<div class="shop-item">
-        <div class="shop-check${s.done?' done':''}" onclick="toggleShop('${s.id}')"></div>
-        <span class="shop-text${s.done?' done':''}">${s.text}</span>
-        <button class="del-btn" onclick="deleteShop('${s.id}')">✕</button>
-      </div>`).join('')}
-    </div>`
-  ).join('');
-}
-
-function toggleShop(id) {
-  if (!window._uid) return;
-  const s = window._shopping.find(s => s.id === id);
-  if (s) window._fsSet(`users/${window._uid}/shopping/${id}`, {done: !s.done});
-}
-
-function deleteShop(id) {
-  if (!window._uid) return;
-  window._fsDel(`users/${window._uid}/shopping/${id}`);
-}
-
-// ─── MODALS ──────────────────────────────────────────────────────
-function openModal(type) {
-  if (type === 'event') {
-    showModal(`
-      <div class="modal-title">Neuer Termin</div>
-      <div class="form-group">
-        <label class="form-label">Titel</label>
-        <input class="form-input" id="ev-title" placeholder="z.B. Arzttermin">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Datum</label>
-        <input class="form-input" id="ev-date" type="date" value="${window._selectedDate}">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Uhrzeit</label>
-        <input class="form-input" id="ev-time" type="time" value="09:00">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Person</label>
-        <div class="member-grid">${memberOpts('ev')}</div>
-      </div>
-      <div class="modal-btns">
-        <button class="btn-cancel" onclick="closeModal()">Abbrechen</button>
-        <button class="btn-save" onclick="saveEvent()">Speichern</button>
-      </div>`);
-    window._selMember = window._members[0].id;
-    document.getElementById('ev-title')?.focus();
-  }
-  else if (type === 'task') {
-    showModal(`
-      <div class="modal-title">Neue Aufgabe</div>
-      <div class="form-group">
-        <label class="form-label">Aufgabe</label>
-        <input class="form-input" id="t-title" placeholder="z.B. Zimmer aufräumen">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Sterne</label>
-        <input class="form-input" id="t-stars" type="number" min="0" max="5" value="2">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Person</label>
-        <div class="member-grid">${memberOpts('t')}</div>
-      </div>
-      <div class="modal-btns">
-        <button class="btn-cancel" onclick="closeModal()">Abbrechen</button>
-        <button class="btn-save" onclick="saveTask()">Speichern</button>
-      </div>`);
-    window._selMember = window._members[0].id;
-    document.getElementById('t-title')?.focus();
-  }
-  else if (type === 'shop') {
-    const cats = [...new Set(window._shopping.map(s => s.category)), 'Sonstiges'];
-    showModal(`
-      <div class="modal-title">Artikel hinzufügen</div>
-      <div class="form-group">
-        <label class="form-label">Artikel</label>
-        <input class="form-input" id="sh-text" placeholder="z.B. Milch">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Kategorie</label>
-        <input class="form-input" id="sh-cat" list="cat-opts" value="Kühlwaren">
-        <datalist id="cat-opts">${cats.map(c=>`<option value="${c}">`).join('')}</datalist>
-      </div>
-      <div class="modal-btns">
-        <button class="btn-cancel" onclick="closeModal()">Abbrechen</button>
-        <button class="btn-save" onclick="saveShop()">Hinzufügen</button>
-      </div>`);
-    document.getElementById('sh-text')?.focus();
-  }
-  else if (type === 'meal') {
-    editMeal(0);
-    return;
-  }
-}
-
-function memberOpts(prefix) {
-  return window._members.map((m, i) =>
-    `<div class="member-opt${i===0?' sel':''}" id="${prefix}-m-${m.id}"
-      style="background:${i===0?m.bg:'#f5f5f5'};border-color:${m.color};color:${m.color};"
-      onclick="selMember('${prefix}','${m.id}')">${m.name}</div>`
-  ).join('');
-}
-
-function selMember(prefix, id) {
-  window._selMember = id;
-  window._members.forEach(m => {
-    const el = document.getElementById(`${prefix}-m-${m.id}`);
-    if (!el) return;
-    if (m.id === id) { el.classList.add('sel'); el.style.background = m.bg; }
-    else { el.classList.remove('sel'); el.style.background = '#f5f5f5'; }
-  });
-}
-
-async function saveEvent() {
-  const title = document.getElementById('ev-title')?.value?.trim();
-  const date = document.getElementById('ev-date')?.value;
-  const time = document.getElementById('ev-time')?.value;
-  if (!title || !date || !window._uid) { closeModal(); return; }
-  await window._fsAdd(`users/${window._uid}/events`, {title, date, time, memberId: window._selMember||window._members[0].id});
-  closeModal();
-}
-
-async function saveTask() {
-  const title = document.getElementById('t-title')?.value?.trim();
-  const stars = parseInt(document.getElementById('t-stars')?.value)||0;
-  if (!title || !window._uid) { closeModal(); return; }
-  await window._fsAdd(`users/${window._uid}/tasks`, {title, stars, done: false, memberId: window._selMember||window._members[0].id});
-  closeModal();
-}
-
-async function saveShop() {
-  const text = document.getElementById('sh-text')?.value?.trim();
-  const category = document.getElementById('sh-cat')?.value?.trim()||'Sonstiges';
-  if (!text || !window._uid) { closeModal(); return; }
-  await window._fsAdd(`users/${window._uid}/shopping`, {text, category, done: false});
-  closeModal();
-}
-
-function showModal(html) {
-  document.getElementById('modal-content').innerHTML = html;
-  document.getElementById('modal-bg').classList.add('open');
-}
-
-function closeModal() {
-  document.getElementById('modal-bg').classList.remove('open');
-}
-
-function closeModalOutside(e) {
-  if (e.target === document.getElementById('modal-bg')) closeModal();
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
-}
-
-// Initial render
-renderCal();
-renderTasks();
-renderMeals();
-renderPhotos();
-renderShopping();
+updateTime();
+setInterval(updateTime, 60000);
+renderWeek();
 </script>
 </body>
 </html>
