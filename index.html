@@ -8,19 +8,8 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f5;color:#1a1a1a;min-height:100vh;}
 
-/* LOGIN */
-#login-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);}
-.login-card{background:white;border-radius:16px;padding:2.5rem;text-align:center;width:320px;box-shadow:0 20px 60px rgba(0,0,0,0.15);}
-.login-logo{font-size:48px;margin-bottom:1rem;}
-.login-title{font-size:22px;font-weight:600;margin-bottom:0.5rem;color:#1a1a1a;}
-.login-sub{font-size:14px;color:#666;margin-bottom:2rem;}
-.google-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px;border:1.5px solid #ddd;border-radius:8px;background:white;cursor:pointer;font-size:14px;font-weight:500;color:#333;transition:all 0.15s;}
-.google-btn:hover{background:#f8f8f8;border-color:#bbb;}
+#app{max-width:900px;margin:0 auto;padding:16px 16px 80px;}
 
-/* APP */
-#app{display:none;max-width:900px;margin:0 auto;padding:16px 16px 80px;}
-
-/* TOP BAR */
 .topbar{background:white;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;border-radius:12px;margin-bottom:16px;}
 .topbar-left{display:flex;align-items:center;gap:12px;}
 .topbar-title{font-size:16px;font-weight:600;}
@@ -28,43 +17,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .sync-btn:hover{background:#5a6fd6;}
 .sync-btn.syncing{animation:spin 1s linear infinite;}
 @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-.search-field{display:flex;align-items:center;gap:8px;}
-.search-input{padding:8px 12px;border:1.5px solid #ddd;border-radius:6px;font-size:13px;width:220px;}
+.search-field{flex:1;margin:0 16px;}
+.search-input{width:100%;padding:8px 12px;border:1.5px solid #ddd;border-radius:6px;font-size:13px;}
 .search-input:focus{outline:none;border-color:#667eea;}
-.search-results{display:none;position:fixed;top:70px;right:20px;background:white;border:1px solid #ddd;border-radius:8px;width:220px;max-height:300px;overflow-y:auto;z-index:200;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
-.search-results.open{display:block;}
-.search-result-item{padding:10px 12px;border-bottom:1px solid #f0f0f0;cursor:pointer;font-size:12px;}
-.search-result-item:hover{background:#f8f8ff;}
 
-/* VIEW TABS */
 .view-tabs{display:flex;gap:8px;margin-bottom:20px;}
 .tab-btn{padding:8px 14px;border:1.5px solid #ddd;background:white;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;transition:all 0.15s;}
 .tab-btn.active{background:#667eea;color:white;border-color:#667eea;}
 
-/* WEEK CONTAINER */
 .week-container{background:white;border-radius:12px;padding:20px;border:1px solid #f0f0f0;display:grid;grid-template-columns:1fr 1fr;gap:20px;min-height:500px;}
 
-/* LEFT SIDE */
 .current-day{display:flex;flex-direction:column;border-right:2px solid #f0f0f0;padding-right:20px;}
 
-.time-display{font-size:32px;font-weight:700;margin-bottom:4px;font-family:'Courier New',monospace;padding:8px 12px;border-radius:8px;width:fit-content;}
-.time-display.sunny{background:linear-gradient(135deg,#FDB022 0%,#FF9D00 100%);color:white;}
-.time-display.cloudy{background:linear-gradient(135deg,#B0BEC5 0%,#90A4AE 100%);color:white;}
-.time-display.rainy{background:linear-gradient(135deg,#64B5F6 0%,#42A5F5 100%);color:white;}
-
+.time-display{font-size:32px;font-weight:700;margin-bottom:4px;font-family:'Courier New',monospace;padding:8px 12px;border-radius:8px;width:fit-content;background:linear-gradient(135deg,#FDB022 0%,#FF9D00 100%);color:white;}
 .time-label{font-size:11px;color:#999;font-weight:600;margin-bottom:16px;}
-.weather-box{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;border-radius:8px;padding:12px;margin-bottom:16px;font-size:13px;text-align:center;position:relative;overflow:hidden;}
-.weather-emoji{font-size:32px;animation:float 3s ease-in-out infinite;}
+.weather-box{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;border-radius:8px;padding:12px;margin-bottom:16px;font-size:13px;text-align:center;}
+.weather-emoji{font-size:32px;animation:float 3s ease-in-out infinite;display:block;}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .weather-temp{font-size:18px;font-weight:600;margin:4px 0;}
-.weather-desc{font-size:11px;opacity:0.9;}
+
 .current-day-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .current-day-title{font-size:14px;color:#999;font-weight:600;}
 .today-btn{background:#667eea;color:white;border:none;border-radius:6px;padding:6px 10px;cursor:pointer;font-size:11px;font-weight:600;}
 .today-btn:hover{background:#5a6fd6;}
 .current-day-date{font-size:20px;font-weight:600;margin-bottom:16px;}
-.day-info{font-size:12px;color:#666;margin-bottom:12px;line-height:1.5;}
-.info-label{font-weight:600;display:block;margin-bottom:2px;}
 .current-events{flex:1;}
 .events-label{font-size:12px;color:#999;font-weight:600;margin-bottom:8px;}
 .event-card{background:#f8f8ff;border-left:3px solid #667eea;border-radius:4px;padding:10px 12px;margin-bottom:8px;}
@@ -74,30 +50,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .add-event-btn{width:100%;padding:8px;border:1.5px dashed #ddd;background:transparent;border-radius:6px;cursor:pointer;font-size:12px;color:#667eea;font-weight:500;margin-top:12px;}
 .add-event-btn:hover{background:#f0f0ff;border-color:#667eea;}
 
-/* WEEK DAY CARDS */
 .week-days{display:flex;flex-direction:column;gap:8px;}
 .week-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
 .week-nav-btn{background:transparent;border:1px solid #ddd;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:12px;}
 .week-nav-btn:hover{background:#f8f8f8;}
 .week-title{font-size:13px;font-weight:600;}
 
-.day-card{background:white;border:1px solid #f0f0f0;border-radius:8px;padding:12px;display:flex;gap:12px;cursor:pointer;transition:all 0.15s;align-items:stretch;}
+.day-card{background:white;border:1px solid #f0f0f0;border-radius:8px;padding:12px;display:flex;gap:12px;cursor:pointer;transition:all 0.15s;min-height:100px;}
 .day-card:hover{background:#f8f8ff;border-color:#c0b8f0;}
 .day-card.weekend{background:#f5f5f5;}
 .day-card.selected{background:#e8e0f6;border:2px solid #667eea;}
 
-.day-card-num{font-size:18px;font-weight:700;color:#333;min-width:35px;text-align:center;}
-.day-card-name{font-size:11px;color:#999;font-weight:600;align-self:flex-start;margin-top:2px;}
+.day-card-num{font-size:20px;font-weight:700;color:#333;min-width:40px;text-align:center;line-height:1;}
+.day-card-name{font-size:10px;color:#999;font-weight:600;margin-top:2px;}
 
-.day-card-shift{background:#ffd700;color:#333;border-radius:4px;padding:8px;min-width:40px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;}
+.day-card-shift{background:#ffd700;color:#333;border-radius:4px;padding:8px;min-width:45px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;}
 .day-card-shift.spat{background:#a855f7;color:white;}
 .day-card-shift.none{background:#e0e0e0;color:#999;font-size:12px;}
 
-.day-card-events{flex:1;display:flex;flex-direction:column;gap:4px;overflow:hidden;}
+.day-card-events{flex:1;display:flex;flex-direction:column;gap:4px;overflow-y:auto;}
 .day-card-event{background:#fafafa;padding:6px 10px;border-radius:4px;font-size:11px;border-left:2px solid #667eea;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
 .day-card-event-emoji{font-size:12px;margin-right:4px;}
 
-/* MONTH VIEW */
 .month-container{background:white;border-radius:12px;padding:20px;border:1px solid #f0f0f0;}
 .month-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
 .month-nav-btn{background:transparent;border:1px solid #ddd;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:12px;}
@@ -114,7 +88,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .cal-day-events{display:flex;flex-direction:column;gap:2px;flex:1;overflow:hidden;}
 .cal-event-item{font-size:9px;padding:2px 4px;border-radius:2px;background:#f0f0f0;border-left:2px solid #667eea;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
 
-/* YEAR VIEW */
 .year-container{background:white;border-radius:12px;padding:20px;border:1px solid #f0f0f0;}
 .year-header{text-align:center;margin-bottom:20px;}
 .year-title{font-size:20px;font-weight:600;margin-bottom:4px;}
@@ -126,13 +99,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .mini-day.has-event{background:#e8e0f6;color:#667eea;font-weight:600;}
 .mini-day.weekend{background:#f0f0f0;}
 
-/* BOTTOM NAV */
 .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:900px;background:white;border-top:1px solid #eee;display:flex;z-index:50;border-radius:16px 16px 0 0;}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;cursor:pointer;border:none;background:transparent;color:#999;font-size:10px;gap:3px;transition:color 0.15s;}
 .nav-item.active{color:#667eea;}
 .nav-item svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;}
 
-/* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100;align-items:center;justify-content:center;}
 .modal-overlay.open{display:flex;}
 .modal{background:white;border-radius:12px;padding:20px;width:90%;max-width:360px;}
@@ -141,7 +112,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .form-label{font-size:12px;color:#666;margin-bottom:4px;display:block;font-weight:500;}
 .form-input{width:100%;padding:8px 10px;border:1px solid #ddd;border-radius:6px;font-size:13px;}
 .form-input:focus{outline:none;border-color:#667eea;}
-.emoji-input{font-size:16px;width:40px;padding:4px;}
 .color-picker{display:flex;gap:6px;margin-top:6px;}
 .color-opt{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;}
 .color-opt.selected{border-color:#333;}
@@ -149,37 +119,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .btn-primary{flex:1;background:#667eea;color:white;border:none;border-radius:6px;padding:8px;cursor:pointer;font-weight:600;font-size:13px;}
 .btn-cancel{flex:1;background:transparent;border:1px solid #ddd;border-radius:6px;padding:8px;cursor:pointer;font-size:13px;}
 
-#loading{display:flex;align-items:center;justify-content:center;min-height:100vh;font-size:14px;color:#666;}
+.status{padding:8px 12px;background:#e3f2fd;color:#1976d2;border-radius:6px;font-size:12px;margin-bottom:12px;display:none;}
+.status.show{display:block;}
 </style>
 </head>
 <body>
-
-<div id="loading">Wird geladen…</div>
-
-<div id="login-screen" style="display:none;">
-  <div class="login-card">
-    <div class="login-logo">📅</div>
-    <div class="login-title">Familienplaner</div>
-    <div class="login-sub">Melde dich an um fortzufahren</div>
-    <button class="google-btn" onclick="signInWithGoogle()">
-      <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.2l6.8-6.8C35.9 2.4 30.3 0 24 0 14.6 0 6.6 5.5 2.7 13.5l7.9 6.1C12.5 13.3 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4 6.9-9.9 7.1-17z"/><path fill="#FBBC05" d="M10.6 28.6A14.8 14.8 0 019.5 24c0-1.6.3-3.1.8-4.5l-7.9-6.1A24 24 0 000 24c0 3.9.9 7.6 2.5 10.9l8.1-6.3z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.8 2.2-8.4 2.2-6.2 0-11.5-4.2-13.4-9.9l-8.1 6.3C6.6 42.5 14.6 48 24 48z"/></svg>
-      Mit Google anmelden
-    </button>
-  </div>
-</div>
 
 <div id="app">
   <div class="topbar">
     <div class="topbar-left">
       <span class="topbar-title">📅 Familienplaner</span>
-      <button class="sync-btn" id="sync-btn" onclick="syncCalendar()">🔄 Sync</button>
+      <button class="sync-btn" onclick="syncCalendar()">🔄 Sync</button>
     </div>
-    <div class="search-field">
-      <input type="text" class="search-input" id="search-input" placeholder="🔍 Termine durchsuchen..." onkeyup="searchEvents()">
-    </div>
+    <input type="text" class="search-input" id="search-input" placeholder="🔍 Termine durchsuchen..." onkeyup="searchEvents()">
   </div>
 
-  <div class="search-results" id="search-results"></div>
+  <div class="status" id="status"></div>
 
   <div class="view-tabs">
     <button class="tab-btn active" onclick="showView('week')">📊 Woche</button>
@@ -190,22 +145,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <!-- WEEK VIEW -->
   <div id="view-week" class="week-container">
     <div class="current-day">
-      <div class="time-display sunny" id="current-time">--:--</div>
+      <div class="time-display" id="current-time">--:--</div>
       <div class="time-label">UHRZEIT</div>
       <div class="weather-box">
-        <div class="weather-emoji" id="weather-emoji">☀️</div>
-        <div class="weather-desc" id="weather-desc">Sonnig</div>
-        <div class="weather-temp" id="weather-temp">22°C</div>
+        <span class="weather-emoji">☀️</span>
+        <div class="weather-temp">22°C</div>
+        <div style="font-size:11px;opacity:0.9;">Sonnig</div>
       </div>
       <div class="current-day-header">
         <span class="current-day-title">AKTUELLER TAG</span>
         <button class="today-btn" onclick="goToToday()">Heute</button>
       </div>
-      <div class="current-day-date" id="current-date">Montag, 29. Juni</div>
-      <div class="day-info">
-        <span class="info-label">Arbeit:</span>
-        F = Früh | S = Spät | Juwels
-      </div>
+      <div class="current-day-date" id="current-date">Montag</div>
       <div class="current-events">
         <div class="events-label">TERMINE</div>
         <div id="current-events-list"></div>
@@ -216,7 +167,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div>
       <div class="week-nav">
         <button class="week-nav-btn" onclick="prevWeek()">◀ Vorher</button>
-        <div class="week-title">Restliche Woche</div>
+        <div class="week-title">Woche</div>
         <button class="week-nav-btn" onclick="nextWeek()">Nachher ▶</button>
       </div>
       <div class="week-days" id="week-days"></div>
@@ -237,28 +188,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div id="view-year" style="display:none;" class="year-container">
     <div class="year-header">
       <div class="year-title" id="year-label">2026</div>
-      <div style="font-size:13px;color:#999;margin-top:4px;">Übersicht aller Termine</div>
     </div>
     <div class="months-grid" id="months-grid"></div>
   </div>
 
-  <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
-    <button class="nav-item active" onclick="showSection('week',this)">
-      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>Woche
-    </button>
-    <button class="nav-item" onclick="showSection('month',this)">
-      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>Monat
-    </button>
-    <button class="nav-item" onclick="showSection('year',this)">
-      <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/></svg>Jahr
-    </button>
-    <button class="nav-item" onclick="showSection('tasks',this)">
-      <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Aufgaben
-    </button>
-    <button class="nav-item" onclick="showSection('shopping',this)">
-      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.98-1.71l1.62-9.29H6"/></svg>Einkauf
-    </button>
+    <button class="nav-item active" onclick="showSection('week',this)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>Woche</button>
+    <button class="nav-item" onclick="showSection('month',this)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>Monat</button>
+    <button class="nav-item" onclick="showSection('year',this)"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/></svg>Jahr</button>
+    <button class="nav-item" onclick="showSection('tasks',this)"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/></svg>Aufgaben</button>
+    <button class="nav-item" onclick="showSection('shop',this)"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.98-1.71l1.62-9.29H6"/></svg>Einkauf</button>
   </nav>
 </div>
 
@@ -268,7 +207,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="modal-title">Neuer Termin</div>
     <div class="form-group">
       <label class="form-label">Emoji</label>
-      <input type="text" class="emoji-input form-input" id="emoji-input" value="📅" maxlength="2">
+      <input type="text" class="form-input" id="emoji-input" value="📅" maxlength="2" style="width:50px;">
     </div>
     <div class="form-group">
       <label class="form-label">Titel</label>
@@ -283,11 +222,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <input type="time" class="form-input" id="event-time">
     </div>
     <div class="form-group">
-      <label class="form-label">Schicht (optional)</label>
+      <label class="form-label">Schicht</label>
       <select class="form-input" id="shift-select">
-        <option value="">Keine</option>
-        <option value="F">Frühschicht</option>
-        <option value="S">Spätschicht</option>
+        <option value="">—</option>
+        <option value="F">Frühschicht (F)</option>
+        <option value="S">Spätschicht (S)</option>
       </select>
     </div>
     <div class="form-group">
@@ -301,81 +240,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 </div>
 
-<!-- FIREBASE -->
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getFirestore, doc, collection, onSnapshot, setDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyD1noiwnob0f4zWNtyPcJbcVAN54YJvw2w",
-  authDomain: "kalender-dominik-1.firebaseapp.com",
-  projectId: "kalender-dominik-1",
-  storageBucket: "kalender-dominik-1.firebasestorage.app",
-  messagingSenderId: "547645477153",
-  appId: "1:547645477153:web:25ef6c7f0175a7dbb3ee60"
-};
-
-const fbApp = initializeApp(firebaseConfig);
-const auth = getAuth(fbApp);
-const db = getFirestore(fbApp);
-
-window._auth = auth;
-window._db = db;
-window._signOut = () => signOut(auth);
-
-const provider = new GoogleAuthProvider();
-provider.addScope("https://www.googleapis.com/auth/calendar.readonly");
-
-window.signInWithGoogle = async () => {
-  try {
-    const result = await signInWithPopup(auth, provider);
-  } catch(e) { console.error(e); }
-};
-
-onAuthStateChanged(auth, user => {
-  document.getElementById('loading').style.display = 'none';
-  if (user) {
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    window._uid = user.uid;
-    initFirestore(user.uid);
-  } else {
-    document.getElementById('login-screen').style.display = 'flex';
-    document.getElementById('app').style.display = 'none';
-  }
-});
-
-function initFirestore(uid) {
-  const base = `users/${uid}`;
-  onSnapshot(collection(db, base, 'events'), snap => {
-    window._events = [];
-    snap.forEach(d => window._events.push({id: d.id, ...d.data()}));
-    renderWeek();
-    renderMonth();
-    renderYear();
-  });
-}
-
-window._fsAdd = async (col, data) => {
-  const id = Date.now().toString(36) + Math.random().toString(36).slice(2);
-  const parts = col.split('/');
-  await setDoc(doc(db, ...parts, id), data);
-  return id;
-};
-</script>
-
 <script>
 const colors = [
-  {name:'Blau',hex:'#667eea'}, {name:'Grün',hex:'#22c55e'}, {name:'Rot',hex:'#ef4444'},
-  {name:'Orange',hex:'#f97316'}, {name:'Rosa',hex:'#ec4899'}, {name:'Violett',hex:'#a855f7'},
+  {hex:'#667eea'}, {hex:'#22c55e'}, {hex:'#ef4444'},
+  {hex:'#f97316'}, {hex:'#ec4899'}, {hex:'#a855f7'},
 ];
 
 let events = [
-  {date:'2026-06-29',emoji:'🏥',title:'Zahnarzt',time:'09:30',color:'#667eea',shift:''},
-  {date:'2026-06-29',emoji:'🎭',title:'Ballett',time:'12:30',color:'#667eea',shift:'S'},
-  {date:'2026-06-30',emoji:'🍕',title:'Pizza-Essen',time:'19:00',color:'#f97316',shift:''},
-  {date:'2026-07-01',emoji:'⚽',title:'Fußballtraining',time:'16:00',color:'#ef4444',shift:'F'},
+  {date:'2026-07-01',emoji:'🏥',title:'Zahnarzt',time:'09:00',color:'#667eea',shift:''},
+  {date:'2026-07-01',emoji:'🎭',title:'Ballett',time:'12:30',color:'#f97316',shift:'S'},
+  {date:'2026-07-02',emoji:'🍕',title:'Pizza-Essen',time:'19:00',color:'#ec4899',shift:''},
+  {date:'2026-07-03',emoji:'⚽',title:'Fußballtraining',time:'16:00',color:'#ef4444',shift:'F'},
+  {date:'2026-07-04',emoji:'📚',title:'Lesegruppe',time:'18:00',color:'#22c55e',shift:''},
 ];
 
 const DAYS=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
@@ -383,19 +259,11 @@ const DAY_SHORT=['So','Mo','Di','Mi','Do','Fr','Sa'];
 const MONTHS=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 
 let selectedColor = colors[0].hex;
-let weekStartDate = new Date(2026, 5, 29);
-let selectedDate = '2026-06-29';
-let currentMonth = new Date(2026, 5, 1);
-let currentYear = 2026;
-window._events = events;
-window._currentView = 'week';
-
-function getMonday(date) {
-  const d = new Date(date);
-  const day = d.getDay();
-  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
-  return new Date(d.setDate(diff));
-}
+let weekStartDate = new Date();
+weekStartDate.setDate(weekStartDate.getDate() - weekStartDate.getDay() + 1);
+let selectedDate = weekStartDate.toISOString().slice(0,10);
+let currentMonth = new Date();
+let currentYear = new Date().getFullYear();
 
 function isWeekend(dateStr) {
   const d = new Date(dateStr + 'T00:00:00');
@@ -407,35 +275,12 @@ function updateTime() {
   const h = String(now.getHours()).padStart(2,'0');
   const m = String(now.getMinutes()).padStart(2,'0');
   document.getElementById('current-time').textContent = `${h}:${m}`;
-  
-  const hour = now.getHours();
-  const timeEl = document.getElementById('current-time');
-  if (hour >= 6 && hour < 12) {
-    timeEl.className = 'time-display sunny';
-  } else if (hour >= 12 && hour < 18) {
-    timeEl.className = 'time-display cloudy';
-  } else {
-    timeEl.className = 'time-display rainy';
-  }
 }
 
 function searchEvents() {
-  const q = document.getElementById('search-input').value.toLowerCase().trim();
-  const rd = document.getElementById('search-results');
-  if (!q) { rd.classList.remove('open'); return; }
-  const f = events.filter(e => e.title.toLowerCase().includes(q) || e.emoji.includes(q));
-  rd.innerHTML = f.length ? f.map(e => `<div class="search-result-item" onclick="selectEventFromSearch('${e.date}')"><span style="font-size:14px;margin-right:6px;">${e.emoji}</span><strong>${e.title}</strong><div style="display:block;font-size:10px;color:#999;margin-top:2px;">${e.date} um ${e.time}</div></div>`).join('') : '<div style="padding:12px;text-align:center;color:#ccc;font-size:12px;">Keine Termine</div>';
-  rd.classList.add('open');
-}
-
-function selectEventFromSearch(d) {
-  const date = new Date(d + 'T00:00:00');
-  weekStartDate = getMonday(date);
-  selectedDate = d;
-  document.getElementById('search-input').value = '';
-  document.getElementById('search-results').classList.remove('open');
-  showView('week');
-  renderWeek();
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const results = q ? events.filter(e => e.title.toLowerCase().includes(q)) : [];
+  console.log('Search:', q, results);
 }
 
 function renderWeek() {
@@ -461,9 +306,7 @@ function renderWeek() {
     
     let shiftBar = '—';
     const shiftEvent = de.find(e => e.shift);
-    if (shiftEvent) {
-      shiftBar = shiftEvent.shift;
-    }
+    if (shiftEvent) shiftBar = shiftEvent.shift;
     
     wh += `<div class="day-card${sel}${wknd}" onclick="selectDay('${ds}')">
       <div>
@@ -489,11 +332,7 @@ function renderMonth() {
   const today = new Date().toISOString().slice(0,10);
   
   let html = DAYS.map(d => `<div class="cal-day-name">${d.slice(0,2)}</div>`).join('');
-  const prevDays = new Date(year, month, 0).getDate();
-  
-  for (let i = firstDay - 1; i >= 0; i--) {
-    html += '<div class="cal-day other-month"></div>';
-  }
+  for (let i = firstDay - 1; i >= 0; i--) html += '<div class="cal-day other-month"></div>';
   
   for (let day = 1; day <= daysInMonth; day++) {
     const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
@@ -503,36 +342,28 @@ function renderMonth() {
     
     let shiftColor = '';
     const shiftEvent = dayEvents.find(e => e.shift);
-    if (shiftEvent) {
-      shiftColor = shiftEvent.shift === 'F' ? '#ffd700' : '#a855f7';
-    }
+    if (shiftEvent) shiftColor = shiftEvent.shift === 'F' ? '#ffd700' : '#a855f7';
     
     html += `<div class="cal-day${isToday ? ' today' : ''}${wknd}">
       <div class="cal-day-num">${day}</div>
       ${shiftColor ? `<div class="cal-day-shift-bar" style="background:${shiftColor};"></div>` : ''}
       <div class="cal-day-events">
-        ${dayEvents.filter(e => !e.shift).map(e => `<div class="cal-event-item">${e.emoji} ${e.time.slice(0,5)}</div>`).join('')}
+        ${dayEvents.filter(e => !e.shift).map(e => `<div class="cal-event-item">${e.emoji}</div>`).join('')}
       </div>
     </div>`;
   }
-  
   document.getElementById('cal-grid').innerHTML = html;
 }
 
 function renderYear() {
   document.getElementById('year-label').textContent = currentYear;
-  const today = new Date().toISOString().slice(0,10);
-  
   let html = '';
   for (let m = 0; m < 12; m++) {
     const monthStr = `${currentYear}-${String(m+1).padStart(2,'0')}`;
     const monthEvents = events.filter(e => e.date.startsWith(monthStr));
-    
     html += `<div class="month-card"><div class="month-card-title">${MONTHS[m].slice(0,3)}</div><div class="mini-cal">`;
-    
     const firstDay = (new Date(currentYear, m, 1).getDay() + 6) % 7;
     const daysInMonth = new Date(currentYear, m + 1, 0).getDate();
-    
     for (let i = 0; i < firstDay; i++) html += '<div class="mini-day"></div>';
     for (let d = 1; d <= daysInMonth; d++) {
       const dateStr = `${currentYear}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
@@ -540,7 +371,6 @@ function renderYear() {
       const wknd = isWeekend(dateStr) ? ' weekend' : '';
       html += `<div class="mini-day${hasEvent ? ' has-event' : ''}${wknd}">${d}</div>`;
     }
-    
     html += '</div></div>';
   }
   document.getElementById('months-grid').innerHTML = html;
@@ -549,7 +379,8 @@ function renderYear() {
 function selectDay(d) {
   selectedDate = d;
   const date = new Date(d + 'T00:00:00');
-  weekStartDate = getMonday(date);
+  weekStartDate = new Date(date);
+  weekStartDate.setDate(weekStartDate.getDate() - weekStartDate.getDay() + 1);
   renderWeek();
 }
 
@@ -561,7 +392,8 @@ function nextMonth() { currentMonth.setMonth(currentMonth.getMonth() + 1); rende
 function goToToday() {
   const today = new Date();
   selectedDate = today.toISOString().slice(0,10);
-  weekStartDate = getMonday(today);
+  weekStartDate = new Date(today);
+  weekStartDate.setDate(weekStartDate.getDate() - weekStartDate.getDay() + 1);
   renderWeek();
 }
 
@@ -571,7 +403,6 @@ function showView(name) {
   document.querySelectorAll('.tab-btn').forEach((b,i) => {
     b.classList.toggle('active', (i === 0 && name === 'week') || (i === 1 && name === 'month') || (i === 2 && name === 'year'));
   });
-  window._currentView = name;
 }
 
 function showSection(name, btn) {
@@ -608,27 +439,36 @@ function saveEvent() {
   const shift = document.getElementById('shift-select').value;
   if (!title || !date) { alert('Titel und Datum erforderlich'); return; }
   events.push({date, emoji, title, time, color:selectedColor, shift:shift||''});
-  if (window._uid) window._fsAdd(`users/${window._uid}/events`, {date, emoji, title, time, color:selectedColor, shift:shift||''});
   closeModal();
   selectedDate = date;
-  weekStartDate = getMonday(new Date(date + 'T00:00:00'));
+  weekStartDate = new Date(date + 'T00:00:00');
+  weekStartDate.setDate(weekStartDate.getDate() - weekStartDate.getDay() + 1);
   renderWeek();
   renderMonth();
   renderYear();
 }
 
 function syncCalendar() {
-  const btn = document.getElementById('sync-btn');
+  const btn = document.querySelector('.sync-btn');
   btn.classList.add('syncing');
   setTimeout(() => {
     btn.classList.remove('syncing');
-    alert('✓ Kalender aktualisiert');
+    showStatus('✓ Kalender aktualisiert');
   }, 2000);
+}
+
+function showStatus(msg) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3000);
 }
 
 updateTime();
 setInterval(updateTime, 60000);
 renderWeek();
+renderMonth();
+renderYear();
 </script>
 </body>
 </html>
